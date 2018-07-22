@@ -1,0 +1,120 @@
+<div class="feedback">
+  <div class="feedback__header">
+    <div class="feedback__title">{{info.phone}}</div>
+    <div class="feedback__subtitle">выберите удобный для Вас способ обратной связи с нашей компанией</div>
+    <span class="js-feedback-close">×</span>
+  </div>
+  <div class="feedback__content">
+    <ul class="nav nav-pills feedback__nav">
+      <li class="active feedback__tab">
+        <a class="tab__link" data-toggle="pill" href="#call">
+          <p class="tab__title">
+            <i class="fas fa-mobile-alt"></i>
+          </p>
+          <p class="tab__subtitle">заказать обратный звонок</p>
+        </a>
+      </li>
+      <li class="feedback__tab">
+        <a class="tab__link" data-toggle="pill" href="#message">
+          <p class="tab__title">
+            <i class="fas fa-envelope"></i>
+          </p>
+          <p class="tab__subtitle">отправить сообщение</p>
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content feedback__tab-content">
+      <div id="call" class="tab-pane fade in active">
+        {{#ifCond notifications.type '==' 'callback'}}
+        <div class="alert alert-danger">
+          <ul class="">
+            {{#with notifications}} {{#if username}}
+            <li class="alert__text">{{username}}</li>
+            {{/if}} {{#if phone}}
+            <li class="alert__text">{{phone}}</li>
+            {{/if}} {{/with}}
+          </ul>
+        </div>
+        {{else}}
+        <div class="feedback__alert">
+          <p class="alert__text">Если у Вас возникло желание связаться с нами, укажите Ваше имя и номер телефона и мы перезвоним в ближайшее время</p>
+        </div>
+        {{/ifCond}}
+
+        <form class="feedback__form" action="notification/callback" method="POST">
+          <input class="feedback__field form-control {{#ifCond notifications.type '==' 'callback'}}{{#if notifications.username}}error{{/if}}{{/ifCond}}"
+            type="text" name="username" placeholder="Имя*:">
+          <input class="feedback__field form-control {{#if notifications.phone}}error{{/if}}" type="text" name="phone" placeholder="Телефон*:"
+            data-mask="(999) 999-9999">
+          <div class="feedback__rules">
+
+            <input class="form__checkbox" type="checkbox">
+            <label class="form__label">Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным
+              законом от 27.07.2006 года №152-ФЗ «О персональных данных»</label>
+
+          </div>
+          <div class="feedback__control">
+            <button class="button feedback__btn" type="reset">
+              <i class="fas fa-eraser"></i> очистить
+            </button>
+            <button class="button feedback__btn js-send-notification">
+              <i class="fas fa-paper-plane"></i> отправить
+            </button>
+          </div>
+          <p class="helper-text">поля, помеченные
+            <sub class="enlarge">*</sub> обязательны для заполнения</p>
+        </form>
+      </div>
+      <div id="message" class="tab-pane fade">
+
+        {{#ifCond notifications.type '==' 'message'}}
+        <div class="alert alert-danger">
+          <ul class="">
+            {{#with notifications}} {{#if username}}
+            <li class="alert__text">{{username}}</li>
+            {{/if}} {{#if email}}
+            <li class="alert__text">{{email}}</li>
+            {{/if}} {{#if message}}
+            <li class="alert__text">{{message}}</li>
+            {{/if}} {{/with}}
+          </ul>
+        </div>
+        {{else}}
+        <div class="feedback__alert">
+          <p class="alert__text">Если у Вас есть какие-то пожелания или вопросы, все это можно написать в сообщении, мы отправим Вам ответ на указанную
+            почту в кратчайший срок.</p>
+        </div>
+        {{/ifCond}}
+
+
+        <form class="feedback__form" action="/notification/message" method="POST">
+          <input class="feedback__field field_sm form-control {{#ifCond notifications.type '==' 'message'}}{{#if notifications.username}}error{{/if}}{{/ifCond}}"
+            type="text" name="username" placeholder="Ваше имя*" required>
+          <input class="feedback__field field_sm form-control {{#ifCond notifications.type '==' 'message'}}{{#if notifications.email}}error{{/if}}{{/ifCond}}"
+            type="email" name="email" placeholder="Ваш e-mail*" required>
+          <input class="feedback__field field_sm form-control" type="text" name="phone" placeholder="Ваш телефон">
+          <input class="feedback__field field_sm form-control" type="text" name="company" placeholder="Ваша компания">
+          <textarea class="feedback__field form-control {{#ifCond notifications.type '==' 'message'}}{{#if notifications.message}}error{{/if}}{{/ifCond}}"
+            name="message" rows="4" placeholder="напишите сообщение*" required></textarea>
+          <div class="feedback__rules">
+
+            <input class="form__checkbox" type="checkbox" value="" required>
+            <label class="form__label">Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным
+              законом от 27.07.2006 года №152-ФЗ «О персональных данных»</label>
+
+          </div>
+          <div class="feedback__control">
+            <button class="button feedback__btn" type="reset">
+              <i class="fas fa-eraser"></i> очистить
+            </button>
+            <button class="button feedback__btn js-send-notification">
+              <i class="fas fa-paper-plane"></i> отправить
+            </button>
+          </div>
+          <p class="helper-text">поля, помеченные
+            <sub class="enlarge">*</sub> обязательны для заполнения</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

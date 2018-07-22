@@ -1,0 +1,34 @@
+<div class="main-page">
+
+  {{> _feedback}} {{> _header}} {{> _opportunities}}
+
+  <div class="section section_product">
+    <div class="section__content">
+
+      <div class="section__header">
+        <h2 class="section__title">Наши продукты</h2>
+        <p class="section__subtitle">список всех продуктов
+          <b>стандартной модификации</b>, для того, чтобы увидеть все модификации продукта, нажмите на его название или на ссылку
+          <q>подробное описание всех модификаций</q>
+        </p>
+        <hr class="header_hr" />
+      </div>
+
+      <div class="product-categories">
+        {{#each category as |cat|}}
+        <div class="category" id="category-{{@index}}">
+
+          <div class="category__header">
+            <h2 class="category__title">{{cat.name}} Фелькер</h2>
+          </div>
+
+          {{#each ../products as |prod|}} {{#if (equals prod.category cat.id)}} {{> _product prod=prod}} {{/if}} {{/each}}
+
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  {{> _map}} {{> _footer}}
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="yandex-verification" content="f516680cd76d997e" />
+  <title>{{info.meta.title}}</title>
+
+
+  {{#if info.meta.keywords}}
+  <meta name="keywords" content="{{info.meta.keywords}}"> {{/if}} {{#if info.meta.description}}
+  <meta name="description" content="{{info.meta.description}}"> {{/if}} {{#if info.meta.noindex}}
+  <meta name="robots" content="noindex"> {{/if}}
+  <base href="/">
+  <link type="text/css" rel="stylesheet" href="/css/bootstrap.css" />
+  <link type="text/css" rel="stylesheet" href="/css/summernote.css" />
+  <link type="text/css" rel="stylesheet" href="/css/lobibox.min.css" />
+  <link type="text/css" rel="stylesheet" href="/css/font-awesome.css" />
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  <link type="text/css" rel="stylesheet" href="/css/media.css" />
+
+</head>
+
+<body>
+  {{{body}}}
+
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/notifications.js"></script>
+  <script src="/js/jquery.mask.min.js"></script>
+  <script src="/js/summernote.js"></script>
+  <script src="/js/summernote-ru-RU.js"></script>
+  <script src="/js/animatescroll.min.js"></script> {{!--
+  <script src="/js/font-awesome.js"></script> --}}
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

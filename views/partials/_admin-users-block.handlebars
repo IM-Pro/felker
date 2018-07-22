@@ -1,0 +1,100 @@
+{{!-- БЛОК Пользователей --}}
+<div id="user-block" class="tab-pane fade {{#if (equals adminTab 'user')}}in active{{/if}}">
+  <div class="alert alert-info text-center">
+    Список пользователей. На данный момент пока добавлять можно только пользователей с админским уровнем доступа, поэтому старайтесь
+    для них делать сложный пароль и никому его не сообщайте!
+  </div>
+  <div class="clearfix"></div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">Добавление нового пользоваиеля</div>
+        </div>
+        <div class="panel-body">
+          <form method="POST" action="/user/add" class="form-horizontal">
+            <div class="form-group text-left">
+              <div class="col-sm-4">
+                <label for="login" class="control-label">Имя пользователя</label>
+                <input type="text" class="form-control" name="login" placeholder="имя...">
+              </div>
+              <div class="col-sm-4">
+                <label for="password" class="control-label">Пароль пользователя</label>
+                <input type="text" class="form-control" name="password" placeholder="пароль...">
+              </div>
+              <div class="col-sm-4">
+                <label for="roles" class="control-label">Роли пользователя</label>
+                <select type="text" class="form-control disabled" style="font-size: 14px;" name="roles" placeholder="тип пользователя" value="admin">
+                  <option value="admin">admin</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-btn-container">
+              <button class="btn btn-default btn-sm btn-block form-btn-container__button" type="reset">
+                <i class="glyphicon glyphicon-erase"></i> Очистить
+              </button>
+              <button class="btn btn-warning btn-sm btn-block  form-btn-container__button" type="submit">
+                <i class="glyphicon glyphicon-floppy-disk"></i> Добавить
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-panel">
+      <div class="text-right">
+        <span class="page-title">Список всех пользователей</span>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <table class="table-responsive table-striped table-bordered" style="width: 100%">
+        <thead>
+          <tr>
+            <th style="width: 5%">#</th>
+            <th style="width: 55%">Имя пользователя</th>
+            <th style="width: 20%">Роль пользователя</th>
+            {{!--
+            <th class="text-center" style="width: 10%"></th> --}}
+            <th class="text-center" style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+
+          <tr>
+            <form method="POST" action="/user/edit/{{id}}?_method=PUT" class="form-horizontal">
+              <input type="hidden" name="_method" value="PUT">
+              <td>{{inc @index 1}}</td>
+              <td>
+                <input class="table-input" type="text" name="login" value="{{login}}">
+              </td>
+              <td>
+                <select class="form-control input-sm" name="roles" disabled>
+                  <option value="{{role}}">{{role}}</option>
+                </select>
+                {{!--
+                <input class="table-input" type="text" name="roles" value="{{role}}"> --}}
+              </td>
+              {{!--
+              <td>
+                <button type="submit" class="btn btn-sm btn-default">
+                  <i class="glyphicon glyphicon-floppy-disk"></i> Изменить</button>
+              </td> --}}
+              <td>
+                <button class="btn btn-sm btn-default js-remove-user" onclick="/user/delete/{{id}}">
+                  <i class="glyphicon glyphicon-trash"></i> Удалить</button>
+              </td>
+            </form>
+          </tr>
+
+          {{!--
+          <? } ?> --}} {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

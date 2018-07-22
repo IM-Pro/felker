@@ -1,0 +1,84 @@
+<div class="product">
+        <div class="product-card">
+        <div class="product__preview">
+          <img class="product__img" src="{{prod.img}}" alt="{{prod.title}}">
+        </div>
+        <div class="product-card__content">
+          <div class="product-card__header">
+            <a href="#" data-toggle="modal" data-target="#product-{{@index}}" class="product__title">{{prod.title}}</a> 
+            {{!-- БЫЛО <h3></h3> ВМЕСТО <a></a> --}}
+            <p class="product__subtitle">{{prod.subtitle}}</p>
+          </div>
+          <div class="product-card__description">
+            {{prod.description}}
+          </div>
+          <a class="product__link_description" href="#" data-toggle="modal" data-target="#product-{{@index}}">...подробнее</a>
+        </div>
+        <div class="product__price">
+          <div class="price-value">{{prod.modifications.B.price}} р.</div>
+          <div class="price-info"><span class="hide-on-xs">Модификация</span>
+            <span class="product-mod">B</span>
+          </div>
+          <a href="#" class="product__link" data-toggle="modal" data-target="#product-{{@index}}">Подробное описание всех модификаций...</a>
+        </div>
+      </div>
+      <div class="modal fade" id="product-{{@index}}" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="modal-title">{{prod.title}}
+                <q class="sub-title-text">{{prod.subtitle}}</q>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-4 hide-xs">
+                  <img src="img/felker-packages.png" alt="продукция марки Фелькер" class="modal-win-img">
+                </div>
+                <div class="col-xs-8">
+                  <div class="modal-win-desc full-size-xs">{{{prod.description}}}</div>
+                </div>
+              </div>
+              <div class="mod-section-title">
+                <p>Модификации продукта</p>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="modifications">
+                    <ul class="nav nav-tabs">
+
+                      {{#each prod.modifications as |mod literal|}} {{#if (isBigger mod.price 0)}}
+
+                      <li {{#if (equals literal 'B')}}class="active" {{/if}}>
+
+                        <a data-toggle="tab" href="#{{@../index}}-mod-{{literal}}">
+                          {{literal}}
+                        </a>
+                      </li>
+
+                      {{/if}} {{/each}}
+                    </ul>
+
+                    <div class="tab-content">
+                      {{#each prod.modifications as |mod literal|}} {{#if (isBigger mod.price 0)}}
+                      <div id="{{@../index}}-mod-{{literal}}" class="tab-pane fade {{#if (equals literal 'B')}}in active{{/if}}">
+                        <h3>Модификация {{literal}}</h3>
+                        <p class="mod-price">Цена:
+                          <span>{{mod.price}}</span>
+                        </p>
+                        {{{mod.description}}}
+                      </div>
+                      {{/if}} {{/each}}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>

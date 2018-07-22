@@ -1,0 +1,77 @@
+<div class="admin-panel">
+
+  {{!-- NAVIGATION TABS --}}
+  <div class="admin-side-nav-panel">
+    <ul class="nav nav-pills nav-stacked admin-nav-list">
+      <li class="menu-header">
+
+        <span class="co-name">FELKER</span>
+        <span class="menu-sub-header">панель администратора</span>
+        <a class="menu-header__link" href="/">
+          <i class="fas fa-sign-out-alt fa-fw"></i> на сайт</a>
+      </li>
+      <li {{#if (equals adminTab 'product')}}class="active" {{/if}}>
+        <a data-toggle="tab" href="#product-block">
+          <span class="nav-icon">
+            <i class="glyphicon glyphicon-tasks"></i>
+          </span>
+          <p class="nav-title">Менеджер товаров</p>
+        </a>
+      </li>
+      <li {{#if (equals adminTab 'category')}}class="active" {{/if}}>
+        <a data-toggle="tab" href="#category-block">
+          <span class="nav-icon">
+            <i class="glyphicon glyphicon-list-alt"></i>
+          </span>
+          <p class="nav-title">Менеджер категорий</p>
+        </a>
+      </li>
+      <li {{#if (equals adminTab 'config')}}class="active" {{/if}}>
+        <a data-toggle="tab" href="#config-block">
+          <span class="nav-icon">
+            <i class="glyphicon glyphicon-cog"></i>
+          </span>
+          <p class="nav-title">Настройки сайта</p>
+        </a>
+      </li>
+      <li {{#if (equals adminTab 'notification')}}class="active" {{/if}}>
+        <a data-toggle="tab" href="#notification-block">
+          <span class="nav-icon">
+            <i class="fas fa-bell"></i>
+            {{#ifCond (sum newNotifications.callbacks newNotifications.messages) '>' 0}}
+            <span class="count-badge">{{sum newNotifications.callbacks newNotifications.messages}}</span>
+            {{/ifCond}}
+          </span>
+          <p class="nav-title">Сообщения, оповещения</p>
+        </a>
+      </li>
+      <li {{#if (equals adminTab 'user')}}class="active" {{/if}}>
+        <a data-toggle="tab" href="#user-block">
+          <span class="nav-icon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <p class="nav-title">Менеджер пользователей</p>
+        </a>
+      </li>
+      {{!--
+      <li>
+        <a data-role="logout-btn">
+          <span class="nav-icon">
+            <i class="glyphicon glyphicon-log-out"></i>
+          </span>
+          <p class="nav-title">Выход (Logout)</p>
+        </a>
+      </li> --}}
+    </ul>
+  </div>
+  {{!--
+  <-- END NAVIGATION --> --}}
+
+    <div class="tab-content admin-page-content">
+
+      {{!-- БЛОКИ АДМИНКИ --}} {{> _admin-edit-prod-modal}} {{> _admin-prod-modal}} {{> _admin-product_block}} {{> _admin-category_block}}
+      {{> _admin-users-block}} {{> _admin-notifications}} {{> _admin-settings_block}} {{> _notify}}
+
+    </div>
+
+</div>

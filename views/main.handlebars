@@ -1,0 +1,97 @@
+<div class="felker-content">
+ <div class="felker-header">
+  <div class="row">
+   <div class="col-xs-3 visible-xs">
+    <div class="mobile-nav" data-toggle="dropdown" aria-expanded="true">
+     <i class="glyphicon glyphicon-align-justify"></i>
+    </div>
+    <ul class="dropdown-menu">
+      {{#each category}}
+      <li><a href="category-{{@index}}">{{name}} Фелькер</a></li>
+     {{/each}}
+<!--     <li><a href="#glue">Клей Фелькер</a></li>-->
+<!--     <li><a href="#plaster">Штукатурка Фелькер</a></li>-->
+    </ul>
+   </div>
+   <div class="col-xs-9 col-sm-4 col-lg-3">
+    <h1>FELKER</h1>
+    <p class="sub-title">special product</p>
+   </div>
+   <div class="col-xs-12 col-sm-8 col-md-4 col-lg-6">
+    <p class="header-info">{{{info.subtitle}}}</p>
+   </div>
+   <div class="col-md-4 col-lg-3 visible-md visible-lg">
+    <div class="contacts">
+     <p class="phone">Телефон: {{info.phone}}</p>
+     <p class="e-mail">E-mail: {{info.email}}</p>
+     <!--p class="address">г.Севастополь, ул. Вакуленчука 29, офис 401а</p-->
+    </div>
+   </div>
+   <div class="col-xs-12 felker-navbar hidden-xs">
+    <ul class="products-links">
+      {{#each category}}
+      <li><a onclick="$('#category-{{@index}}').animatescroll();" href="#category-{{@index}}">{{name}} Фелькер</a></li>
+     {{/each}}
+<!--     <li><a href="#glue">Клей Фелькер</a></li>-->
+<!--     <li><a href="#plaster">Штукатурка Фелькер</a></li>-->
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <div class="content">
+  <div class="row">
+   <div class="col-xs-12 felker-section">
+    <div class="row">
+     <div class="col-xs-12 col-sm-6 img-scaling">
+      <img src="{{info.img}}" alt="placeholder" class="main-img">
+     </div>
+     <div class="col-xs-12 col-sm-6">
+      <p class="info-title">О компании</p>
+      <p class="info-text">{{{info.description}}}</p>
+     </div>
+    </div>
+   </div>
+
+  {{#each category as |cat|}}
+    <div class="col-xs-12 felker-section" id="category-{{@index}}">
+
+     <p class="section-title">{{cat.name}} Фелькер</p>
+
+    {{#each ../products as |prod|}}
+    
+
+      {{#if (equals prod.category cat.id)}}
+
+        {{> _main-product-block prod=prod}}
+
+      {{/if}}
+
+     {{!-- todo: вывести список товаров текущей/итерируемой категории --}}
+     {{!-- <? foreach ($products as $prod) {
+      if ($prod['category_id'] == $category['id']) { include ('/modals/product_page_modal.php'); }
+     } ?> --}}
+    {{/each}}
+    </div>
+
+   {{/each}}
+  </div>
+ </div>
+
+ <div class="felker-footer">
+  <div class="row">
+   <div class="col-xs-12 col-md-2"><p>2016 Felker&trade;</p></div>
+   <div class="col-xs-12 col-sm-6 col-md-4"><p>г. Севастополь</p></div>
+   <div class="col-xs-6 col-sm-3"><p>Телефон: {{info.phone}}</p></div>
+   <div class="col-xs-6 col-sm-3"><p>E-mail: office@felker-pro.ru</p></div>
+  </div>
+ </div>
+</div>
+
+{{#if currentUser}}
+<div class="side-tools">
+  <button class="btn btn-default side-tools__btn" title="Вернуться в панель администратора">
+    <a class="side-tools__link" href="/admin"><i class="glyphicon glyphicon-user side-tools__ico"></i></a>
+  </button>
+</div>
+{{/if}}

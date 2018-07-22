@@ -1,0 +1,94 @@
+<div id="notification-block" class="tab-pane fade {{#if (equals adminTab 'notification')}}in active{{/if}}">
+
+  <div class="alert alert-info text-center">
+    <p>Список сообщений отправленных пользователями, а так же оповещений об ожидании обратных звонков</p>
+  </div>
+
+  <div class="clearfix"></div>
+  <ul class="nav nav-pills nav_notifications">
+    <li class="active notifications__nav-tab">
+      <a class="notifications__nav-link" data-toggle="tab" href="#messages">
+        <i class="fas fa-envelope-open fa-fw"></i> Сообщения {{#ifCond newNotifications.messages '>' 0}}
+        <span class="badge notification_badge">{{newNotifications.messages}}</span>
+        {{/ifCond}}
+      </a>
+    </li>
+    <li class="notifications__nav-tab">
+      <a class="notifications__nav-link" data-toggle="tab" href="#callbacks">
+        <i class="fas fa-phone-square fa-fw"></i> Звонки {{#ifCond newNotifications.callbacks '>' 0}}
+        <span class="badge notification_badge">{{newNotifications.callbacks}}</span>
+        {{/ifCond}}
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="messages" class="tab-pane fade in active">
+      <div class="notification-cards-wrapper">
+        {{#each messages as |msg|}}
+        <div class="notification-card{{#ifCond msg.isWatched '==' true}} new{{/ifCond}}">
+          <div class="card__panel">
+            <div class="panel__body">
+              <ul class="owner-info__list">
+                <li class="owner-contact contact_name">
+                  <i class="owner__ico fas fa-user-tie fa-fw"></i>
+                  <span class="owner-contact__details">{{msg.username}}</span>
+                </li>
+                <li class="owner-contact phone">
+                  <i class="owner__ico fas fa-mobile fa-fw"></i>
+                  <span class="owner-contact__details">{{msg.phone}}</span>
+                </li>
+                <li class="owner-contact email">
+                  <i class="owner__ico fas fa-envelope fa-fw"></i>
+                  <span class="owner-contact__details">{{msg.email}}</span>
+                </li>
+                <li class="owner-contact company">
+                  <i class="owner__ico fas fa-building fa-fw"></i>
+                  <span class="owner-contact__details">{{msg.company}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card__content">
+            <div class="card__header">
+              <span class="notification__date">
+                <i class="fas fa-calendar-alt"></i> Отправлено {{msg.date}}</span>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                {{msg.message}}
+              </p>
+              <a class="card__body_link" href="#">подробнее...</a>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+    </div>
+
+    <div id="callbacks" class="tab-pane fade">
+      <div class="notification-cards-wrapper">
+        {{#each callbacks as |cbs|}}
+        <div class="notification-card notification_callback{{#ifCond cbs.isWatched '==' true}} new{{/ifCond}}">
+          <div class="card__panel callback_panel">
+            <div class="panel__header callback_header">
+              <p class="callback__title callback_owner">{{cbs.username}}</p>
+            </div>
+            <div class="panel__body callback_content">
+              <span class="notification__date">
+                <i class="fas fa-calendar-alt"></i> Отправлено {{cbs.date}}</span>
+              <div class="card__body callback_body">
+                <p class="card__text callback_text">{{cbs.phone}}</p>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

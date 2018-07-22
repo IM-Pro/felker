@@ -1,0 +1,85 @@
+<div id="notification-block" class="tab-pane fade {{#if (equals adminTab 'notification')}}in active{{/if}}">
+
+  <div class="alert alert-info text-center">
+    <p>Список сообщений отправленных пользователями, а так же оповещений об ожидании обратных звонков</p>
+  </div>
+
+  <div class="clearfix"></div>
+  <ul class="nav nav-tabs">
+    <li class="active notifications__nav-tab">
+      <a data-toggle="tab" href="#messages">
+        <i class="fas fa-envelope-open fa-fw"></i> Сообщения <span class="badge notification_badge">{{newNotifications.messages}}</span></a>
+    </li>
+    <li class="notifications__nav-tab">
+      <a data-toggle="tab" href="#callbacks">
+        <i class="fas fa-phone-square fa-fw"></i> Звонки <span class="badge notification_badge">{{newNotifications.callbacks}}</span></a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="messages" class="tab-pane fade in active">
+      <div class="notification-cards-wrapper">
+        {{#each messages as |msg|}}
+        <div class="notification-card{{#ifCond msg.isWatched '==' true}} new{{/ifCond}}">
+          <div class="card__panel">
+            <div class="panel__header">
+              <i class="fas fa-comment-alt panel__ico"></i>
+              <span class="notification__date">{{msg.formattedDate}}</span>
+            </div>
+            <div class="panel__body">
+              <ul class="controls__list">
+                <li>
+                  <a class="tools__link" href="#">
+                    <i class="control__ico fas fa-edit"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="tools__link" href="#">
+                    <i class="control__ico fas fa-trash"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="tools__link" href="#">
+                    <i class="control__ico fas fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card__content">
+            <div class="card__header">
+              <h3 class="card__owner">
+                <i class="owner__ico fas fa-user-tie fa-fw"></i>{{msg.username}}</h3>
+              <div class="card-owner__contacts">
+                <ul class="contacts-list">
+                  <li class="owner-contact phone">
+                    <i class="fas fa-mobile fa-fw"></i> {{msg.phone}}
+                  </li>
+                  <li class="owner-contact email">
+                    <i class="fas fa-envelope fa-fw"></i> {{msg.email}}
+                  </li>
+                  <li class="owner-contact company">
+                    <i class="fas fa-building fa-fw"></i> {{msg.company}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                {{msg.message}}
+              </p>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+        </div>
+        
+    </div>
+      
+    <div id="callbacks" class="tab-pane fade">
+      <div class="notification-card">
+
+      </div>
+    </div>
+  </div>
+</div>

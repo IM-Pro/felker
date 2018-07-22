@@ -1,0 +1,119 @@
+{{!--
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <button onclick="$('#new-product-modal').modal('show');" class="btn btn-primary btn-block">Open product modal</button>
+  </div>
+</div> --}}
+
+<div class="modal fade new-product-modal" id="new-product-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-title">
+          {{#if product}} {{product.title}} {{else}} Новый продукт {{/if}}
+        </div>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-wrapper">
+
+          <form method="POST" class="form-horizontal" id="prod-mngment-form" action="{{#if product}}
+     /products/edit/{{product.id}}?_method=PUT
+     {{else}}
+     /products/add
+     {{/if}}" enctype="multipart/form-data">
+            {{!--
+            <input type="hidden" name="_method" value=""> --}} {{#if product}}
+            <input type="hidden" name="_method" value="PUT"> {{/if}}
+
+            <div class="form-group">
+              <div class="col-sm-6 col-md-4">
+                <div class="form__prod-img">
+                  <label for="prod_name" class="col-xs-12 prod-img_label control-label">Фото продукта</label>
+                  <input type="file" name="image" class="form-control input-sm hidden" />
+                  <img class="form_img" src="/img/no-img.png" alt="фото продукта" />
+                  <button class="btn btn-sm btn-block btn-default js-upload-pic">
+                    <i class="fas fa-image fa-fw"></i> Загрузить
+                  </button>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-8">
+                <div class="form-group">
+                  <label for="prod_name" class="control-label">Название продукта</label>
+                  <input type="text" name="prod_name" class="form-control input-sm" placeholder="название продукта..." required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="subtitle" class="control-label">Приписка к названию продукта</label>
+                  <input type="text" name="subtitle" class="form-control input-sm" placeholder="Felker спецпродукт №..." />
+                </div>
+                <div class="form-group">
+                  <label for="category" class="control-label">Категория продукта</label>
+                  <select type="text" name="category" class="form-control input-sm">
+                    {{#each categories}}
+                    <option value="{{id}}">
+                      {{name}}
+                    </option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="prod_description" class="control-label">Общее описание продукта</label>
+              <textarea name="prod_description" rows="5" class="form-control input-sm" placeholder="Общее описание продукта..."></textarea>
+            </div>
+
+            <div class="form-subtitle">Модификации продукта</div>
+            <div class="row modifications-wrapper">
+              <ul class="nav nav-tabs">
+                {{#each modHeaders as |mod|}}
+                <li {{#if (equals mod 'A')}}class="active" {{/if}}>
+                  <a data-toggle="tab" href="#tabs-mod-{{mod}}">{{mod}}</a>
+                </li>
+                {{/each}}
+              </ul>
+              <div class="tab-content ">
+                {{#each modHeaders as |mod|}}
+
+                <div id="tabs-mod-{{mod}}" class="tab-pane fade{{#if (equals mod 'A')}}in active{{/if}}">
+                  <div data-block="modification" data-mod-name="{{mod}}">
+                    <div class="form-group">
+                      <label for="mod-{{mod}}-price" class="col-xs-offset-2 col-xs-2 control-label">Цена: </label>
+                      <div class="col-xs-4">
+                        <div class="input-group">
+                          <input type="number" class="text-center form-control input-sm" placeholder="цена" name="mod-{{mod}}-price" value="{{#if product.modifications.mod.price}}{{product.modifications.mod.price}}{{else}}0{{/if}}"
+                          />
+                          <div class="input-group-addon"> руб.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <textarea data-role="text-editor" name="mod-{{mod}}-description" rows="4" class="form-control input-sm" placeholder="описание модификации">
+               {{#if product.modifications.mod.description}}{{product.modifications.mod.description}}{{/if}}
+              </textarea>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="form-bottom padding-default text-right">
+              <button class="pull-left btn btn-default btn-sm btn-default-size js-reset-form" type="reset">
+                <i class="glyphicon glyphicon-erase"></i> очистить
+              </button>
+              <button class="btn btn-warning btn-sm btn-default-size js-save-btn" type="submit">
+                <i class="glyphicon glyphicon-floppy-disk"></i> сохранить
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

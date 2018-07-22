@@ -1,0 +1,78 @@
+<header class="header">
+  <div class="navbar-inverse navbar-desktop">
+    <div class="dropdown main-menu">
+      <button class="button button_main-menu dropdown-toggle" data-toggle="dropdown">
+        <i class="ico main-menu__ico fas fa-bars"></i>
+        <span class="main-menu__title">Категории продуктов
+          <b class="caret"></b>
+        </span>
+      </button>
+      <ul class="dropdown-menu main-menu__nav">
+        {{#each category}}
+        <li>
+          <a class="nav__link" onclick="$('#category-{{@index}}').animatescroll();" href="#category-{{@index}}">{{name}} Фелькер</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <ul class="nav__list" style="display: none;">
+      {{#each category}}
+      <li>
+        <a class="nav__link" onclick="$('#category-{{@index}}').animatescroll();" href="#category-{{@index}}">{{name}} Фелькер</a>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="contacts contacts_header">
+      <ul class="contacts__list">
+        <li class="contacts__phone">
+          <i class="fas fa-mobile-alt ico"></i>+7(978)136-95-00</li>
+        <li class="contacts__text">Звоните пн-сб с 9:00 до 20:00</li>
+      </ul>
+      <button class="contacts__feedback button button_orange" onclick="openFeedbackForm()">заказать звонок</button>
+    </div>
+  </div>
+  <div class="main-banner">
+    <div class="logo logo_header">
+      <p class="logo__title">FELKER</p>
+      <p class="logo__subtitle">special product</p>
+    </div>
+    <div class="main-banner__content-wrapper">
+
+      <div class="text-block">
+        <h1 class="main-banner__title">Высококачественные строительные материалы от производителя</h1>
+        <div class="main-banner__description">
+          <div class="header__info">
+            <p>Во всем Крыму нашу компанию знают, как надежного партнера и производителя качественных стройматериалов для фасадных
+              и кровельных работ, а также внутренней отделки помещений.
+              <br> Завод укомплектован современным производственным оборудованием с возможностью выпуска более 250 тонн продукции
+              в месяц.</p>
+            <p style="color: #ffbc65;">Сухие строительные смеси соответствуют межгосударственному стандарту ГОСТ 31189-2015 и выполнены по&nbsp;
+              <b>ТУ 5745–001–00296319–2015</b>
+            </p>
+          </div>
+        </div>
+      </div>
+      <form class="form-horizontal main-banner__form" action="/notification/message" method="POST">
+        <h3 class="main-banner-form_title">Обратная связь</h3>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <label for="username"></label>
+            <input class="form-control" name="username" placeholder="укажите имя...">
+          </div>
+          <div class="col-xs-12">
+            <label for="email"></label>
+            <input class="form-control" name="email" placeholder="укажите эмэйл...">
+          </div>
+          <div class="col-xs-12">
+            <label for="msg"></label>
+            <textarea class="form-control" rows="3" name="message" placeholder="напишите сообщение..."></textarea>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="form-btn-panel">
+          <button type="submit" class="button js-send-notification feedback-form_button">Отправить сообщение</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>

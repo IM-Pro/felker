@@ -1,0 +1,47 @@
+{{#if error_msg}}
+<div class="alert alert-warning text-center">{{error_msg}}</div>
+{{/if}}
+<div class="admin-panel authorisation-block">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title text-center">
+        <i class="glyphicon glyphicon-cog"></i> Вход в админ панель</div>
+    </div>
+    <div class="panel-body">
+      <form method="POST" class="form-horizontal" action="/admin/login/">
+        <div class="row">
+          {{#if error}}
+
+          <div class="alert alert-danger text-center" data-role="form-info">
+            {{error}}
+          </div>
+
+          {{else}}
+
+          <div class="alert alert-info text-center" data-role="form-info">
+            для входа на страницу админ панели, введите верные данные в поля формы
+          </div>
+
+          {{/if}}
+        </div>
+        <div class="form-group">
+          <label for="login" class="control-label">Логин</label>
+          <input type="text" class="form-control" name="login" placeholder="введите логин..." required>
+        </div>
+        <div class="form-group">
+          <label for="password" class="control-label">Пароль</label>
+          <input type="password" class="form-control" name="password" placeholder="введите пароль..." required>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-bottom row">
+          <button class="btn btn-default btn-sm" data-role="back-to-main-page">
+            <i class="glyphicon glyphicon-log-out"></i> Вернуться
+          </button>
+          <button class="btn btn-warning btn-sm" data-role="authorisation-btn">
+            <i class="glyphicon glyphicon-log-in"></i> Подтвердить
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

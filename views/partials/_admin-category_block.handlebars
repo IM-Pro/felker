@@ -1,0 +1,81 @@
+<!--  БЛОК КАТЕГОРИЙ  -->
+<div id="category-block" class="tab-pane fade {{#if (equals adminTab 'category')}}in active{{/if}}">
+
+  <div class="alert alert-info text-center">
+    <strong>Список всех категорий товаров.</strong>
+    <br/>
+    <p class="text-danger">Перед тем как удалить категорию товара, незабудьте изменить ее у всех товаров! Товары с удаленной категорией не будут
+      отображться на главной странице сайта</p>
+  </div>
+
+  <div class="control-panel">
+    <div class="text-right">
+      <span class="page-title">Список всех категорий</span>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-8">
+      <table class="table-responsive table-striped table-bordered" style="width: 100%">
+        <thead>
+          <tr>
+            <th style="width: 5%">#</th>
+            <th style="width: 75%">Категория</th>
+            <th class="text-center" style="width: 10%"></th>
+            <th class="text-center" style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each categories}}
+
+          <tr>
+            <form method="POST" action="/category/edit/{{id}}?_method=PUT" class="form-horizontal">
+              <input type="hidden" name="_method" value="PUT">
+              <td>{{inc @index 1}}</td>
+              <td>
+                <input class="table-input" type="text" name="category_name" value="{{name}}">
+              </td>
+              <td>
+                <button type="submit" class="btn btn-sm btn-default" data-action="edit-category">
+                  <i class="glyphicon glyphicon-floppy-disk"></i> Изменить</button>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-default js-cat-del" onclick="/category/delete/{{id}}">
+                  <i class="glyphicon glyphicon-trash"></i> Удалить</button>
+              </td>
+            </form>
+          </tr>
+
+          {{!--
+          <? } ?> --}} {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">Новая категория</div>
+        </div>
+        <div class="panel-body">
+          <form method="POST" action="/category/add" class="form-horizontal">
+            <div class="form-group text-left">
+              <div class="col-sm-12">
+                <label for="name" class="control-label">Имя категории</label>
+                <input type="text" class="form-control" name="name" placeholder="название категории...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-offset-3 col-sm-6">
+                <button class="btn btn-warning btn-sm btn-block" type="submit">
+                  <i class="glyphicon glyphicon-floppy-disk"></i> Добавить
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
