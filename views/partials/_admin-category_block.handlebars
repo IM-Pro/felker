@@ -9,9 +9,7 @@
   </div>
 
   <div class="control-panel">
-    <div class="text-right">
-      <span class="page-title">Список всех категорий</span>
-    </div>
+    <span class="page-title">Список всех категорий</span>
   </div>
 
   <div class="clearfix"></div>
@@ -37,13 +35,15 @@
               <td>
                 <input class="table-input" type="text" name="category_name" value="{{name}}">
               </td>
-              <td>
+              <td class="btn-cell">
                 <button type="submit" class="btn btn-sm btn-default" data-action="edit-category">
-                  <i class="glyphicon glyphicon-floppy-disk"></i> Изменить</button>
+                  <i class="glyphicon glyphicon-floppy-disk"></i> <span class="td-btn-title">Изменить</span>
+                </button>
               </td>
-              <td>
+              <td class="btn-cell">
                 <button class="btn btn-sm btn-default js-cat-del" onclick="/category/delete/{{id}}">
-                  <i class="glyphicon glyphicon-trash"></i> Удалить</button>
+                  <i class="glyphicon glyphicon-trash"></i> <span class="td-btn-title">Удалить</span>
+                </button>
               </td>
             </form>
           </tr>

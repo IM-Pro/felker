@@ -323,6 +323,10 @@
   .contacts__item {
     font-size: 12px;
   }
+  #notification-block .tab-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 /* 320px - 479px  */
@@ -479,5 +483,46 @@
   }
   .nav-title {
     display: none;
+  }
+  .modal-win-img-wrapper,
+  .modal-win-desc-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+  .modal-win-img-wrapper {
+    padding: 25px;
+  }
+  .modal-win-desc-wrapper {
+    padding: 0;
+  }
+  .main-img, .modal-win-img {
+    max-height: 200px;
+  }
+  .admin-panel .control-panel {
+    text-align: center;
+  }
+  .menu-header .co-name {
+    font-size: 18px;
+  }
+  .td-btn-title {
+    display: none;
+  }
+  .hide-xs {
+    display: none !important;
+  }
+  .btn-cell button i {
+    margin: 0;
+  }
+  .page-title {
+    float: none;
+    padding: 0 15px;
+    text-align: center;
+  }
+  .notifications__nav-tab + .notifications__nav-tab {
+    margin-left: 0;
+    margin-top: 3px;
+  }
+  .callback_header {
+    padding: 7px 5px;
   }
 }

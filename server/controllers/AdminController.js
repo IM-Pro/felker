@@ -49,7 +49,7 @@ exports.ensureAuthenticated = (req, res, next) => {
     next();
   } else {
     req.flash('error_msg', 'Необходима авторизация!');
-    res.redirect('/admin/login')
+    res.redirect(401, '/admin/login')
   }
 }
 

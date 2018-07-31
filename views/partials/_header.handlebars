@@ -25,7 +25,7 @@
     <div class="contacts contacts_header">
       <ul class="contacts__list">
         <li class="contacts__phone">
-          <i class="fas fa-mobile-alt ico"></i>+7(978)136-95-00</li>
+          <i class="fas fa-mobile-alt ico"></i>{{info.phone}}</li>
         <li class="contacts__text">Звоните пн-сб с 9:00 до 20:00</li>
       </ul>
       <button class="contacts__feedback button button_orange" onclick="openFeedbackForm()">заказать звонок</button>
@@ -39,16 +39,10 @@
     <div class="main-banner__content-wrapper">
 
       <div class="text-block">
-        <h1 class="main-banner__title">Высококачественные строительные материалы от производителя</h1>
+        <h1 class="main-banner__title">{{info.subtitle}}</h1>
         <div class="main-banner__description">
           <div class="header__info">
-            <p>Во всем Крыму нашу компанию знают, как надежного партнера и производителя качественных стройматериалов для фасадных
-              и кровельных работ, а также внутренней отделки помещений.
-              <br> Завод укомплектован современным производственным оборудованием с возможностью выпуска более 250 тонн продукции
-              в месяц.</p>
-            <p style="color: #ffbc65;">Сухие строительные смеси соответствуют межгосударственному стандарту ГОСТ 31189-2015 и выполнены по&nbsp;
-              <b>ТУ 5745–001–00296319–2015</b>
-            </p>
+            {{{info.description}}}
           </div>
         </div>
       </div>

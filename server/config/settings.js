@@ -1,5 +1,7 @@
-if (process.env.NODE_ENV != 'production') {
-  const local = require('../../config/local.settings');
+let local;
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV != 'production') {
+  local = require('../../config/local.settings');
 }
 
 const settings = {

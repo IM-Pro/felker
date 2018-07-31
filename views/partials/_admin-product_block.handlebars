@@ -7,12 +7,10 @@
     Список всех товаров на сайте. Для изменения всех данных товара нужно нажать кнопку "Изменить" в строке соответствующего товара. Если необходимо изменить только цену(-ы) модификации(-ий) товара, то это можно сделать прямов  таблице, после чего нажать кнопку "Сохранить".
   </div>
   <div class="control-panel">
-    <div class="text-right">
-      <span class="page-title">Список всех товаров</span>
-      <button class="btn btn-warning btn-sm" onclick="$('#new-product-modal').modal('show');">
-        <i class="glyphicon glyphicon-th-large"></i> добавить новый продукт
-      </button>
-    </div>
+    <span class="page-title">Список всех товаров</span>
+    <button class="btn btn-warning btn-sm" onclick="$('#new-product-modal').modal('show');">
+      <i class="glyphicon glyphicon-th-large"></i> добавить новый продукт
+    </button>
   </div>
 
   <table class="table-responsive table-striped table-bordered">
@@ -49,12 +47,12 @@
                 <i class="glyphicon glyphicon-floppy-disk td-btn-ico"></i> <span class="td-btn-title">Сохранить</span>
               </button>
             </td>
-            <td>
+            <td class="btn-cell">
               <button class="btn btn-sm btn-default js-edit-product-modul-open" onclick="/products/{{prod.id}}" title="Изменить полностью все данные продукта">
                 <i class="glyphicon glyphicon-list-alt td-btn-ico"></i> <span class="td-btn-title">Изменить</span>
               </button>
             </td>
-            <td>
+            <td class="btn-cell">
               <button class="btn btn-sm btn-default js-remove-product" onclick="/products/delete/{{prod.id}}" title="удалить текущий продукт">
                 <i class="glyphicon glyphicon-trash td-btn-ico"></i> <span class="td-btn-title">Удалить</span>
               </button>
