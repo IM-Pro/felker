@@ -327,6 +327,12 @@
     padding-left: 0;
     padding-right: 0;
   }
+  .notification-card {
+    flex-wrap: wrap;
+  }
+  .hide-sm {
+    display: none !important;
+  }
 }
 
 /* 320px - 479px  */
@@ -524,5 +530,8 @@
   }
   .callback_header {
     padding: 7px 5px;
+  }
+  .notification-card {
+    height: auto;
   }
 }

@@ -25,6 +25,7 @@
   <div class="tab-content">
     <div id="messages" class="tab-pane fade in active">
       <div class="notification-cards-wrapper">
+        {{#if messages}}
         {{#each messages as |msg|}}
         <div class="notification-card{{#ifCond msg.isWatched '==' true}} new{{/ifCond}}">
           <div class="card__panel">
@@ -52,7 +53,7 @@
           <div class="card__content">
             <div class="card__header">
               <span class="notification__date">
-                <i class="fas fa-calendar-alt"></i> Отправлено {{msg.date}}</span>
+                <i class="fas fa-calendar-alt"></i> <span class="hide-sm">Отправлено</span> {{msg.date}}</span>
             </div>
             <div class="card__body">
               <p class="card__text">
@@ -63,12 +64,16 @@
           </div>
         </div>
         {{/each}}
+        {{else}}
+        <div class="alert alert-default">Сообщений пока нет</div>
+        {{/if}}
       </div>
 
     </div>
 
     <div id="callbacks" class="tab-pane fade">
       <div class="notification-cards-wrapper">
+        {{#if callbacks}}
         {{#each callbacks as |cbs|}}
         <div class="notification-card notification_callback{{#ifCond cbs.isWatched '==' true}} new{{/ifCond}}">
           <div class="card__panel callback_panel">
@@ -77,7 +82,7 @@
             </div>
             <div class="panel__body callback_content">
               <span class="notification__date">
-                <i class="fas fa-calendar-alt"></i> Отправлено {{cbs.date}}</span>
+                <i class="fas fa-calendar-alt"></i> <span class="hide-sm">Отправлено</span> {{cbs.date}}</span>
               <div class="card__body callback_body">
                 <p class="card__text callback_text">{{cbs.phone}}</p>
               </div>
@@ -88,6 +93,9 @@
 
         </div>
         {{/each}}
+        {{else}}
+        <div class="alert alert-default">Запросов пока нет</div>
+        {{/if}}
       </div>
     </div>
   </div>
