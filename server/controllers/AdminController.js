@@ -46,7 +46,12 @@ passport.use(
 
 exports.ensureAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
-    next();
+    const isAdmin = req.user.roles.includes('admin');
+    if (isAdmin) return next();
+    
+    req.flash('error_msg', 'Нет прав доступа!');
+    req.errors = ['no rights']
+    return next();
   } else {
     req.flash('error_msg', 'Необходима авторизация!');
     res.redirect(401, '/admin/login')
@@ -84,7 +89,15 @@ exports.addNewUser = async (req, res, next) => {
 }
 
 exports.removeUser = async (req, res) => {
-  req.removedUser = await Users.remove(req.params.id);
+  if (req.errors && req.errors.includes('no rights')) {
+    req.flash(`error_msg`, `Нет прав доступа!`);
+    res.status(403).json({error: 'нет прав доступа'})
+  } else {
+    const removedUser = await Users.remove(req.params.id);
+    req.flash(`success_msg`, `Пользователь ${req.removedUser} удален`);
+    res.status(200).send(removedUser);
+  }
+  
 }
 
 exports.updateUserData = async (req, res) => {

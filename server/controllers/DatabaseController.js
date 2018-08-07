@@ -2,7 +2,6 @@ const Categories = require('../models/Category');
 const Products = require('../models/Product');
 const Notifications = require('../models/Notification');
 const Data = require('../models/Data');
-const mongoose = require('mongoose');
 
 /**
  * Managing Product Categories:

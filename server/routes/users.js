@@ -24,11 +24,7 @@ router.put('/edit/:id',
 //route for deleting user
 router.delete('/delete/:id',
   AdminController.ensureAuthenticated,
-  errorHandler(AdminController.removeUser),
-  (req, res) => {
-    req.flash(`success_msg`, `Пользователь ${req.removedUser} удален`);
-    res.status(200).send(req.removedUser);
-  }
+  errorHandler(AdminController.removeUser)
 );
 
 module.exports = router;

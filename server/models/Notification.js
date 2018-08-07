@@ -62,7 +62,6 @@ exports.get = async (type = '', limit = 10, offset = 0) => {
     .limit(limit)
     .skip(offset)
     .sort('-date');
-
 }
 
 exports.countNew = async (type = '') => {

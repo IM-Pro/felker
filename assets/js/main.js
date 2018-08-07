@@ -206,7 +206,7 @@ $(function () {
   $('.js-remove-user').click(async (e) => {
     e.preventDefault();
 
-    const target = e.target;
+    const target = e.currentTarget;
     const url = target.attributes.onclick.value;
     const row = $(target.form.parentElement);
     const name = row.find('[name="login"]').val();
