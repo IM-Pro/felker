@@ -24,7 +24,7 @@
 
   <div class="tab-content">
     <div id="messages" class="tab-pane fade in active">
-      <div class="notification-cards-wrapper callbacks_wrapper">
+      <div class="notification-cards-wrapper">
         {{#if messages}}
         {{#each messages as |msg|}}
         <div class="notification-card{{#ifCond msg.isWatched '==' true}} new{{/ifCond}}">
@@ -71,7 +71,7 @@
     </div>
 
     <div id="callbacks" class="tab-pane fade">
-      <div class="notification-cards-wrapper">
+      <div class="notification-cards-wrapper callbacks_wrapper">
         {{#if callbacks}}
         {{#each callbacks as |cbs|}}
         <div class="notification-card notification_callback{{#ifCond cbs.isWatched '==' true}} new{{/ifCond}}">
