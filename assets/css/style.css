@@ -2014,6 +2014,9 @@ a:visited {
   min-width: 290px;
   height: 120px;
 }
+.notification_callback:not(:first-child) {
+  margin-left: 10px;
+}
 .callback_panel {
   width: 100%;
   background-color: white;
