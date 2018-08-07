@@ -1782,7 +1782,9 @@ a:visited {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
+.callbacks_wrapper {
+  justify-content: flex-start;
+}
 .notification-card {
   width: 47.5%;
   border: 1px solid lightgrey;
@@ -1959,10 +1961,10 @@ a:visited {
 
 .card__text {
   margin: 0;
-  padding: 7px 0;
+  padding: 0;
   color: grey;
   font-size: 13px;
-  max-height: 85%;
+  max-height: 90%;
   overflow-y: auto;
 }
 
