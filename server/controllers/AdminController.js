@@ -45,7 +45,6 @@ passport.use(
 )
 
 exports.ensureAuthenticated = (req, res, next) => {
-  next();
   if (req.isAuthenticated()) {
     const isAdmin = req.user.roles.includes('admin');
     if (isAdmin) return next();

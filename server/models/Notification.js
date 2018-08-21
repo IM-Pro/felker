@@ -67,7 +67,7 @@ exports.get = async (type = '', limit = 10, offset = 0) => {
 exports.countNew = async (type = '') => {
   const path = type ? {type: type, isWatched: false} : {isWatched: false};
   
-  return await Notification.count(path);
+  return await Notification.find(path).countDocuments();
 }
 
 exports.remove = async (id) => {
