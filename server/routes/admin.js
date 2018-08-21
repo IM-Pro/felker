@@ -5,7 +5,7 @@ const errorHandler = require('../middlewares/errorHandler');
 
 // admin page
 router.get('/',
-  // AdminController.ensureAuthenticated,
+  AdminController.ensureAuthenticated,
   errorHandler(DatabaseController.getSiteCommonData),
   errorHandler(DatabaseController.getAllCategories),
   errorHandler(DatabaseController.getAllProducts),
