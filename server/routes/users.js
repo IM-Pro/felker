@@ -4,7 +4,7 @@ const errorHandler = require('../middlewares/errorHandler');
 
 //route for adding new user
 router.post('/add',
-  AdminController.ensureAuthenticated,
+  // AdminController.ensureAuthenticated,
   errorHandler(AdminController.addNewUser),
   (req, res) => {
     req.flash('success_msg', `Пользователь ${req.body.login} был успешно добавлен`)
@@ -23,7 +23,7 @@ router.put('/edit/:id',
 
 //route for deleting user
 router.delete('/delete/:id',
-  AdminController.ensureAuthenticated,
+  // AdminController.ensureAuthenticated,
   errorHandler(AdminController.removeUser)
 );
 
