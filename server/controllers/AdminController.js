@@ -45,6 +45,7 @@ passport.use(
 )
 
 exports.ensureAuthenticated = (req, res, next) => {
+  next();
   if (req.isAuthenticated()) {
     const isAdmin = req.user.roles.includes('admin');
     if (isAdmin) return next();
@@ -54,7 +55,7 @@ exports.ensureAuthenticated = (req, res, next) => {
     return next();
   } else {
     req.flash('error_msg', 'Необходима авторизация!');
-    res.redirect(401, '/admin/login')
+    res.redirect('/admin/login')
   }
 }
 
