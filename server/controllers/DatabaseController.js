@@ -39,7 +39,6 @@ exports.removeCategory = async (req, res) => {
 
 /**
  * Managing all Product data
- * todo: check all functions!!!
  */
 
 exports.addNewProduct = async (req, res) => {
@@ -206,7 +205,7 @@ exports.addNewNotification = async (req, res) => {
   req.report = {
     username: newNote.username,
     report: newNote.type == 'callback' ?
-      `${newNote.username} Ваша заявка на обратный звонок зврегистрирована, мы свяжемся с Вами в ближайшее время` : `${newNote.username} Ваше сообщение отправлено, мы ознакомимся с ним в ближайшее время и, при необходимости, отправим ответ на email: ${newNote.email}`
+      `${newNote.username} Ваша заявка на обратный звонок зврегистрирована, мы свяжемся с Вами в ближайшее время` : `${newNote.username} Ваше сообщение отправлено, мы ознакомимся с ним в ближайшее время`
   }
 }
 

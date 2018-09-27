@@ -935,15 +935,11 @@ a:visited {
 .logo {
   padding: 10px 15px;
   text-align: center;
-  background: black;
   color: white;
 }
 
 .logo_header {
-  width: 230px;
-  position: absolute;
-  top: 0;
-  left: calc(50% - 115px);
+  align-self: center;
   padding: 8px 15px;
 }
 
@@ -977,7 +973,6 @@ a:visited {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: calc(50% - 115px);
   color: white;
 }
 
@@ -1028,6 +1023,8 @@ a:visited {
 .main-menu {
   align-self: center;
   z-index: 100;
+  display: flex;
+  justify-content: center;
 }
 
 .main-menu__ico {
@@ -1037,10 +1034,11 @@ a:visited {
 
 .main-menu__nav {
   background: #222;
-  width: 100%;
   border-radius: 3px;
   border-color: #B0BEC5;
   top: calc(100% + 5px);
+  left: calc(50% - 235px / 2);
+  width: 235px;
 }
 
 .button_main-menu {
@@ -1048,9 +1046,10 @@ a:visited {
   color: #B0BEC5;
   font-size: 16px;
   height: 36px;
+  width: 235px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .button_main-menu:hover,
@@ -1151,8 +1150,7 @@ a:visited {
 
 .header_hr {
   display: inline-block;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 15px 0;
   border: 0;
   border-top: 2px solid #f95b29;
   ;
@@ -1212,7 +1210,7 @@ a:visited {
 .product-card__content {
   width: 60%;
   flex-grow: 1;
-  padding: 10px 15px;
+  padding: 15px 10px;
   border-left: 1px solid #f9f9f9;
   border-right: 1px solid #f9f9f9;
 }
@@ -1286,18 +1284,19 @@ a:visited {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 30px 50px;
+  padding: 20px 0;
 }
 
 .opportunity {
   padding: 20px;
   background-color: white;
-  width: 40%;
+  width: 47%;
+  flex-grow: 0.35;
   min-width: 300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   height: 130px;
   box-shadow: 0px 0px 6px 2px rgba(128, 128, 128, 0.15);
 }
@@ -1329,6 +1328,7 @@ a:visited {
 .opportunity__title {
   font-size: 16px;
   margin-top: 0;
+  font-weight: 600;
   line-height: 20px;
 }
 

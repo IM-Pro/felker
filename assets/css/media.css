@@ -10,7 +10,7 @@
 /* 768px - 992px  */
 @media (max-width: 992px) {
   .navbar-desktop {
-    padding: 0 25px;
+    padding: 0 50px;
   }
   .logo_header {
     padding: 7px 15px;
@@ -115,10 +115,12 @@
   }
   .main-menu {
     position: relative;
+    width: auto;
   }
   .button_main-menu {
-    font-size: 24px;
-    height: 42px;
+    font-size: 20px;
+    height: 45px;
+    width: auto;
   }
   .main-menu__ico {
     margin: 0;
@@ -126,19 +128,19 @@
   .main-menu__title {
     display: none;
   }
+  .main-menu__nav {
+    left: 0;
+  }
   .nav__list {
     display: none;
   }
-  .logo_header {
-    width: 230px;
-    background: transparent;
-    left: calc(50% - 165px);
-  }
   .contacts_header {
-    width: auto;
     z-index: 50;
     padding: 10px;
     position: relative;
+  }
+  .contacts__phone {
+    font-size: 16px;
   }
   .main-banner__content-wrapper {
     padding: 10px;
@@ -166,8 +168,9 @@
     padding: 0;
   }
   .opportunity__title {
-    font-size: 15px;
+    font-size: 14px;
     margin-bottom: 5px;
+    line-height: 16px;
   }
   .opportunity__subtitle {
     font-size: 12px;
@@ -338,23 +341,16 @@
 /* 320px - 479px  */
 @media (max-width: 479px) {
   .logo_header {
-    padding: 12px;
-    left: calc(50% - 115px);
+    padding: 0;
   }
   .navbar-desktop {
     flex-direction: column;
     padding: 15px 10px;
   }
   .main-menu {
+    top: 18px;
     align-self: flex-start;
-  }
-  .button_main-menu {
-    font-size: 24px;
-    height: 48px;
-  }
-  
-  .contacts_header {
-    width: 100%;
+    position: absolute;
   }
   .logo__subtitle {
     display: none;
