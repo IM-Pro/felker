@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const DatabaseController = require('../controllers/DatabaseController');
 const AdminController = require('../controllers/AdminController');
+const MainController = require('../controllers/MainController');
 const errorHandler = require('../middlewares/errorHandler');
 
 // admin page

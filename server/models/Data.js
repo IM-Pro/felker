@@ -47,6 +47,11 @@ const DataSchema = new Schema({
     trim: true,
     default: 'img/felker-products.png'
   },
+  infographics: [{
+    icon: String,
+    title: String,
+    text: String
+  }]
 });
 
 const Data = mongoose.model('infos', DataSchema);

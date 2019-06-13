@@ -15,6 +15,8 @@ router.post('/add',
   }
 );
 
+router.get('/teest', DatabaseController.testGroup);
+
 router.put('/edit/:id',
   ensureAuthenticated,
   errorHandler(DatabaseController.updateCategory),

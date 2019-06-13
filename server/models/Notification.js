@@ -83,6 +83,14 @@ exports.add = async (entity) => {
   return await notification.save();
 }
 
+exports.getAllNotificationsByType = async () => {
+  return await Notification.aggregate([
+    {
+      $group: { _id: "$type", list: { $push: "$$ROOT" }, count: { $sum: 1 } }
+    }
+  ]);
+}
+
 exports.all = async () => {
   return await Notification.find({});
 }

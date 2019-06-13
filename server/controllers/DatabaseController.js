@@ -163,6 +163,13 @@ exports.getAllNotifications = async (req, res) => {
   }
 }
 
+
+exports.testGroup = async (req, res) => {
+  const notifications = await Notifications.teeest();
+
+  return res.status(200).json(notifications)
+}
+
 exports.addNewNotification = async (req, res) => {
 
   req.body.type = req.params.type;
@@ -227,7 +234,7 @@ exports.updateSiteCommonData = async (req, res) => {
     let temp = key.split('_');
     const request = req.body;
 
-    if (temp[0] == 'meta') {
+    if (temp[0] === 'meta') {
       data['meta'][temp[1]] = request[key];
     } else if (key != '_method' && key != 'files') {
       let value = request[key];
