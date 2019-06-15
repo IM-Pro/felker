@@ -1,4 +1,7 @@
-<div class="footer">
+<div class="footer" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="legalName" content="ПСК СевСпецСтройРеставрация" />
+<meta itemprop="name" content="ПСК СССР" />
+<meta itemprop="brand" content="Felker" />
   <div class="footer__text">
     <p>Если у Вас возник вопрос, предложение или желание узнать больше о нашей продукции, будем рады Вашему звонку! При желании,
       на нашем сайте Вы можете воспользоваться формой для отправки сообщений или заказать звонок, после чего наш менеджер
@@ -21,22 +24,22 @@
 
   <div class="contacts contacts_footer">
     <ul class="contacts__list contacts__list_footer">
-      <li class="contact contact_country">
+      <li class="contact contact_country" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
         <p class="contacts__title">
           <i class="ico glyphicon glyphicon-map-marker"></i>Адрес:</p>
-        <p class="contacts__item">Россия, Крым, г. Севастополь</p>
+        <p class="contacts__item" itemprop="addressLocality">Россия, Крым, г. Севастополь</p>
       </li>
       <li class="contact contact_phone">
         <p class="contacts__title">
           <i class="ico glyphicon glyphicon-phone"></i> Телефон:</p>
-        <p class="contacts__item contacts__phone">{{info.phone}}</p>
+        <p class="contacts__item contacts__phone" itemprop="telephone">{{info.phone}}</p>
         <p class="contacts__text contacts__text_footer">Звоните пн-сб с 9:00 до 20:00</p>
       </li>
 
       <li class="contact contact_email">
         <p class="contacts__title">
           <i class="ico glyphicon glyphicon-envelope"></i>Эл. почта</p>
-        <p class="contacts__item">{{info.email}}</p>
+        <p class="contacts__item" itemprop="email">{{info.email}}</p>
       </li>
     </ul>
 

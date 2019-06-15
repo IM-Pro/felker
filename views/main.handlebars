@@ -54,9 +54,9 @@
    </div>
 
   {{#each category as |cat|}}
-    <div class="col-xs-12 felker-section" id="category-{{@index}}">
+    <div class="col-xs-12 felker-section" id="category-{{@index}}" itemscope itemtype="http://schema.org/Product">
 
-     <p class="section-title">{{cat.name}} Фелькер</p>
+     <p class="section-title" itemprop="name">{{cat.name}} Фелькер</p>
 
     {{#each ../products as |prod|}}
     

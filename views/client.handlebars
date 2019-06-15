@@ -14,15 +14,23 @@
         <hr class="header_hr" />
       </div>
 
-      <div class="product-categories">
+      <div class="product-categories" itemscope itemtype="http://schema.org/ItemList">
         {{#each category as |cat|}}
-        <div class="category" id="category-{{@index}}">
+        <div class="category" id="category-{{@index}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
 
           <div class="category__header">
-            <h2 class="category__title">{{cat.name}} Фелькер</h2>
+            <h2 class="category__title" itemprop="name">{{cat.name}} Фелькер</h2>
+            <meta itemprop="description" content="большой ассортимент сухих строительных смесей категории {{cat.name}} в Крыму и Севастополе" />
+            <meta itemprop="brand" content="Felker" />
           </div>
 
-          {{#each ../products as |prod|}} {{#if (equals prod.category cat.id)}} {{> _product prod=prod}} {{/if}} {{/each}}
+          <div class="products-list">
+            {{#each ../products as |prod|}} 
+              {{#if (equals prod.category cat.id)}} {{> _product prod=prod}} {{/if}} 
+            {{/each}}
+          </div>
+
+          
 
         </div>
         {{/each}}

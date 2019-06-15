@@ -1,21 +1,30 @@
-<div class="product">
+<div class="product" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <div class="product-card">
         <div class="product__preview">
-          <img class="product__img" src="{{prod.img}}" alt="{{prod.title}}">
+          <img class="product__img" src="{{prod.img}}" alt="{{prod.title}}" itemprop="image">
         </div>
         <div class="product-card__content">
           <div class="product-card__header">
-            <a href="#" data-toggle="modal" data-target="#product-{{@index}}" class="product__title">{{prod.title}}</a> 
+            <a 
+              href="#" class="product__title"
+              data-toggle="modal" data-target="#product-{{@index}}" 
+              itemprop="name"
+            >
+              {{prod.title}}
+            </a> 
             {{!-- БЫЛО <h3></h3> ВМЕСТО <a></a> --}}
             <p class="product__subtitle">{{prod.subtitle}}</p>
           </div>
-          <div class="product-card__description">
+          <div class="product-card__description" itemprop="description">
             {{prod.description}}
           </div>
           <a class="product__link_description" href="#" data-toggle="modal" data-target="#product-{{@index}}">...подробнее</a>
         </div>
         <div class="product__price">
-          <div class="price-value">{{prod.modifications.B.price}} р.</div>
+          <div class="price-value">
+            <span itemprop="price">{{prod.modifications.B.price}}</span> р.
+            <meta itemprop="priceCurrency" content="RUB" />
+          </div>
           <div class="price-info"><span class="hide-on-xs">Модификация</span>
             <span class="product-mod">B</span>
           </div>
