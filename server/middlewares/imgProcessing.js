@@ -13,6 +13,7 @@ module.exports = (req, res, next) => {
   const types = new RegExp('png|jpg|jpeg');
   const file = req.files[0];
 
+  if (!file || !file.mimetype) return next();
 
   if (types.test(file.mimetype)) {
     cloudinary.v2

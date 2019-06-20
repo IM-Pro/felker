@@ -14,7 +14,7 @@ const ProductSchema = new Schema({
   },
   img: {
     type: String,
-    default: 'img/felker-products.png'
+    default: '/img/felker-products.png'
   },
   category: {
     type: Schema.Types.ObjectId,
