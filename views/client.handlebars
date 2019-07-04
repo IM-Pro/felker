@@ -17,6 +17,8 @@
       <div class="product-categories" itemscope itemtype="http://schema.org/ItemList">
         {{#each category as |cat|}}
         <div class="category" id="category-{{@index}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+        <meta itemprop="position" content="{{@index}}" />
+        <meta itemprop="url" content="http://felker-pro.herokuapp.com/category-{{@index}}" />
 
           <div class="category__header">
             <h2 class="category__title" itemprop="name">{{cat.name}} Фелькер</h2>
