@@ -16,10 +16,11 @@
 
       <div class="product-categories" itemscope itemtype="http://schema.org/ItemList">
         {{#each category as |cat|}}
+        
+        <div class="category" id="category-{{@index}}" itemprop="itemListElement"> 
         <meta itemprop="position" content="{{@index}}" />
-        <div class="category" id="category-{{@index}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product"> 
 
-          <div class="category__header">
+          <div class="category__header" itemscope itemtype="http://schema.org/Product">
             <h2 class="category__title" itemprop="name">{{cat.name}} Фелькер</h2>
             <meta itemprop="description" content="большой ассортимент сухих строительных смесей категории {{cat.name}} в Крыму и Севастополе" />
             <meta itemprop="brand" content="Felker" />
