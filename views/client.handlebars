@@ -14,10 +14,10 @@
         <hr class="header_hr" />
       </div>
 
-      <div class="product-categories" itemscope itemtype="http://schema.org/ItemList">
+      <div class="product-categories">
         {{#each category as |cat|}}
         
-        <div class="category" id="category-{{@index}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+        <div class="category" id="category-{{@index}}" itemscope itemtype="http://schema.org/Product">
 
           <div class="category__header">
             <h2 class="category__title" itemprop="name">{{cat.name}} Фелькер</h2>
